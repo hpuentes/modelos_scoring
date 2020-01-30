@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Scoring credito Comfandi</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+  <style type="text/css">
+      form {
+          margin: 20px auto;
+          width: 420px;
+      }
+      .form-row {
+          padding: 5px 10px;
+      }
+      label {
+          display: block;
+          margin: 3px 0;
+      }
+      .form-row input {
+          padding: 3px 1px;
+          width: 100%;
+      }
+      input.currency {
+          text-align: right;
+          padding-right: 15px;
+      }
+      .input-group .form-control {
+          float: none;
+      }
+      .input-group .input-buttons {
+          position: relative;
+          z-index: 3;
+      }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <img src="comfandi_logo.png" class="rounded float-left" alt="...">
+    <img src="stratio_only_logo_blue.png" class="rounded float-right" alt="...">
+  </div>
+      <div class="container">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info"><h1>Stratio Data Centric - Intelligence<h1></li>
+        <li class="list-group-item list-group-item-info"><h4>- Machine learning models execution<h4></li>
+          <li class="list-group-item list-group-item-info"><h4>- Statistics models execution<h4></li>
+    </ul>
+    <br/>
+    <br/>
+  </div>
+    <div class="container">
+        <h3>Credit Scoring</h3><br/>
+        <h3><p>Modelos de crédito rotativo y de subsidio.</p></h3>
+
+    </div>
+    <div class="container">
+        <div class="form-row">
+
+          <div class="col-md-4 mb-3">
+            <label for="aplicante">Aplicantes Crédito</label>
+            <select class="form-control custom-select" size="3" id="applicante" name="aplicante" placeholder="Aplicante crédito">
+              <option value="R1" selected>Aplicante Rotativo 1</option>
+              <option value="S1">Aplicante Subsidio 1</option>
+            </select>
+          </div>
+        </div>
+        <br/>
+        <span class="badge badge-success"><h1 id="scoring">Score:</h1></span>
+    </div>
+
+  <br/>
+
+
+    <div class="container">
+
+
+<br/>
+
+
+      <div class="form-row">
+
+        <div class="col-md-4 mb-3">
+          <label for="tCred">Tipo de crédito</label>
+          <select class="form-control" id="tCred" name="tCred" placeholder="Tipo de crédito">
+            <option value="rotativo" selected>Crédito rotativo</option>
+            <option value="subsidio">Crédito de subsidio</option>
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="model">Modelo</label>
+          <select class="form-control" id="model" name="model" placeholder="Modelo">
+            <option value="random_forest" selected>Random Forest</option>
+            <option value="logistico">Logistic Regresion</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+           <label for="cant_per_car">Cantidad de personas a cargo</label>
+           <input type="number" class="form-control" name="cant_per_car" id="cant_per_car" placeholder="Cantidad de personas a cargo" value=2>
+        </div>
+
+        <div class="col-md-4 mb-3">
+           <label for="hijos_afiliados">Número de hijos o hijastros beneficiarios</label>
+           <input type="number" class="form-control" name="hijos_afiliados" id="hijos_afiliados" placeholder="Número de hijos o hijastros beneficiarios" value=1>
+        </div>
+
+        <div class="col-md-4 mb-3">
+           <label for="mayor65_afiliados">Beneficiarios mayores de 65 años</label>
+           <input type="number" class="form-control" name="mayor65_afiliados" id="mayor65_afiliados" placeholder="Beneficiarios mayores de 65 años" value=2>
+        </div>
+
+        <div class="col-md-4 mb-3">
+           <label for="salario">Salario</label>
+           <div class="input-group">
+             <span class="input-group-addon">$</span>
+             <input type="number" class="form-control currency" name="salario" id="salario" placeholder="Salario" value=828116>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+           <label for="edad">Edad</label>
+           <input type="number" class="form-control" name="edad" id="edad" placeholder="edad" value=59>
+        </div>
+
+        <div class="col-md-4 mb-3">
+           <label for="meses_Afili">Meses de afiliación</label>
+           <input type="number" class="form-control" name="meses_Afili" id="meses_Afili" placeholder="meses_Afili" value=52>
+        </div>
+
+        <div class="col-md-4 mb-3">
+           <label for="ultima_compra">Monto último crédito</label>
+           <div class="input-group">
+             <span class="input-group-addon">$</span>
+             <input type="number" class="form-control currency" name="ultima_compra" id="ultima_compra" placeholder="Monto último crédito" value=300000>
+           </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="categoria">Categoría de afiliación</label>
+          <select class="form-control" id="categoria" name="categoria" placeholder="Categoría de afiliación">
+            <option value="A" selected>A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="estado_civil">Estado civil</label>
+          <select class="form-control" id="estado_civil" name="estado_civil" placeholder="Estado civil">
+            <option value="1">Union Libre</option>
+            <option value="2" selected>Casado(a)</option>
+            <option value="3">Divorciado(a)</option>
+            <option value="4">Separado(a)</option>
+            <option value="5">Viudo(a)</option>
+            <option value="6">Soltero(a)</option>
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="genero">Genero</label>
+          <select class="form-control" id="genero" name="genero" placeholder="Genero">
+            <option value="M" selected>Masculino</option>
+            <option value="F">Femenino</option>
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="identificadorTipoVivienda">Tipo vivienda</label>
+          <select class="form-control" id="identificadorTipoVivienda" name="identificadorTipoVivienda" placeholder="Tipo vivienda">
+            <option value="A">Arriendo</option>
+            <option value="F">Familiar</option>
+            <option value="H">Inmueble con hipoteca</option>
+            <option value="O">Otra</option>
+            <option value="P" selected>Propia</option>
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="tipoContrato">Tipo contrato</label>
+          <select class="form-control" id="tipoContrato" name="tipoContrato" placeholder="Tipo contrato">
+            <option value="CA">Carrera administrativa</option>
+            <option value="CO">Culminación de obra</option>
+            <option value="LN">Libre nombramiento</option>
+            <option value="OC">Otras formas de contratación</option>
+            <option value="PR">Provisionalidad</option>
+            <option value="PS">Prestación de servicios</option>
+            <option value="PT">Planta temporal</option>
+            <option value="TF">Termino fijo</option>
+            <option value="TI" selected>Termino indefinido</option>
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+           <label for="prom_cantidad">Promedio de créditos por mes</label>
+           <input type="number" class="form-control" name="prom_cantidad" id="prom_cantidad" placeholder="Cantidad promedio de créditos por mes" value=0.4>
+        </div>
+
+        <div class="col-md-4 mb-3">
+           <label for="prom_compras">Valor promedio de créditos por mes</label>
+           <div class="input-group">
+             <span class="input-group-addon">$</span>
+             <input type="number" class="form-control currency" name="prom_compras" id="prom_compras" placeholder="Valor promedio de créditos primer trimestre" value=207000>
+           </div>
+        </div>
+
+      </div>
+    <button class="btn btn-primary" id = "btnSubmit" type="submit">Scoring</button>
+
+  </div>
+
+  <script type="text/javascript">
+    $( '#applicante' )
+      .change(() => {
+        var applicante = $('#applicante').val();
+
+        var cant_per_car = "";
+        var hijos_afiliados = "";
+        var mayor65_afiliados = "";
+        var salario = "";
+        var edad = "";
+        var meses_Afili = "";
+        var prom_cantidad = "";
+        var prom_compras = "";
+        var ultima_compra = "";
+        var categoria = "";
+        var estado_civil = "";
+        var genero = "";
+        var identificadorTipoVivienda = "";
+        var tipoContrato = "";
+        var model = "";
+        var tCred = "";
+
+        if(applicante == "R1"){
+          cant_per_car = 4;
+          hijos_afiliados = 2;
+          mayor65_afiliados = 3;
+          salario = 828116;
+          edad = 29;
+          meses_Afili = 14;
+          prom_cantidad = 0.3469387755102041;
+          prom_compras = 29954.714285714286;
+          ultima_compra = 100659;
+          categoria = "A";
+          estado_civil = 5;
+          genero = "F";
+          identificadorTipoVivienda = "O";
+          tipoContrato = "TI";
+          model = "random_forest";
+          tCred = "rotativo";
+        }
+        else if(applicante == "S1"){
+          cant_per_car = 2;
+          hijos_afiliados = 2;
+          mayor65_afiliados = 2;
+          salario = 781242;
+          edad = 31;
+          meses_Afili = 42;
+          prom_cantidad = 0.7;
+          prom_compras = 400000;
+          ultima_compra = 773112;
+          categoria = "D";
+          estado_civil = 5;
+          genero = "M";
+          identificadorTipoVivienda = "O";
+          tipoContrato = "TI";
+          model = "random_forest";
+          tCred = "subsidio";
+        }
+
+        $('#cant_per_car').val(cant_per_car);
+        $('#hijos_afiliados').val(hijos_afiliados);
+        $('#mayor65_afiliados').val(mayor65_afiliados);
+        $('#salario').val(salario);
+        $('#edad').val(edad);
+        $('#meses_Afili').val(meses_Afili);
+        $('#prom_cantidad').val(prom_cantidad);
+        $('#prom_compras').val(prom_compras);
+        $('#ultima_compra').val(ultima_compra);
+        $('#categoria').val(categoria);
+        $('#estado_civil').val(estado_civil);
+        $('#genero').val(genero);
+        $('#identificadorTipoVivienda').val(identificadorTipoVivienda);
+        $('#tipoContrato').val(tipoContrato);
+        $('#model').val(model);
+        $('#tCred').val(tCred);
+
+        $("#scoring").html("Score:");
+      }
+    )
+
+    $( '#btnSubmit' )
+      .click( () => {
+      var cant_per_car = $('#cant_per_car').val();
+      var hijos_afiliados = $('#hijos_afiliados').val();
+      var mayor65_afiliados = $('#mayor65_afiliados').val();
+      var salario = $('#salario').val();
+      var edad = $('#edad').val();
+      var meses_Afili = $('#meses_Afili').val();
+      var prom_cantidad = $('#prom_cantidad').val();
+      var prom_compras = $('#prom_compras').val();
+      var ultima_compra = $('#ultima_compra').val();
+      var categoria = $('#categoria').val();
+      var estado_civil = $('#estado_civil').val();
+      var genero = $('#genero').val();
+      var identificadorTipoVivienda = $('#identificadorTipoVivienda').val();
+      var tipoContrato = $('#tipoContrato').val();
+      var model = $('#model').val();
+      var tCred = $('#tCred').val();
+
+      if(cant_per_car == "")
+      {
+        alert("Debe ingresar la cantidad de personas a cargo");
+        return;
+      }
+      else if(hijos_afiliados == "")
+      {
+        alert("Debe ingresar el número de hijos o hijastros beneficiarios");
+        return;
+      }
+      else if(mayor65_afiliados == "")
+      {
+        alert("Debe ingresar el número de beneficiarios mayores de 65 años");
+        return;
+      }
+      else if(mayor65_afiliados == "")
+      {
+        alert("Debe ingresar el número de beneficiarios mayores de 65 años");
+        return;
+      }
+      else if(salario == "")
+      {
+        alert("Debe ingresar el salario");
+        return;
+      }
+      else if(edad == "")
+      {
+        alert("Debe ingresar la edad");
+        return;
+      }
+      else if(meses_Afili == "")
+      {
+        alert("Debe ingresar los meses de afiliación");
+        return;
+      }
+      else if(prom_cantidad == "")
+      {
+        alert("Debe ingresar la cantidad promedio de créditos por mes");
+        return;
+      }
+      else if(prom_compras == "")
+      {
+        alert("Debe ingresar el valor promedio de créditos por mes");
+        return;
+      }
+      else if(ultima_compra == "")
+      {
+        alert("Debe ingresar el monto del último crédito");
+        return;
+      }
+      else if(estado_civil == "")
+      {
+        alert("Debe ingresar el estado civil");
+        return;
+      }
+      else if(identificadorTipoVivienda == "")
+      {
+        alert("Debe ingresar el tipo de vivienda");
+        return;
+      }
+      else if(tipoContrato == "")
+      {
+        alert("Debe ingresar el tipo de contrato laboral");
+        return;
+      }
+      else if(model == "")
+      {
+        alert("Debe ingresar el tipo de modelo");
+        return;
+      }
+      else if(tCred == "")
+      {
+        alert("Debe ingresar el tipo de crédito");
+        return;
+      }
+
+      salario = parseInt(salario)/100;
+
+      var categoria_A = categoria == "A" ? 1:0
+      var categoria_B = categoria == "B" ? 1:0
+      var categoria_C = categoria == "C" ? 1:0
+      var categoria_D = categoria == "D" ? 1:0
+
+      var tipoContrato_PS = tipoContrato == "PS" ? 1:0
+      var tipoContrato_PT = tipoContrato == "PT" ? 1:0
+      var tipoContrato_TF = tipoContrato == "TF" ? 1:0
+      var tipoContrato_TI = tipoContrato == "TI" ? 1:0
+      var tipoContrato_PR = tipoContrato == "PR" ? 1:0
+      var tipoContrato_OC = tipoContrato == "OC" ? 1:0
+      var tipoContrato_CO = tipoContrato == "CO" ? 1:0
+
+      var estado_civil_1 = estado_civil == "1" ? 1:0
+      var estado_civil_2 = estado_civil == "2" ? 1:0
+      var estado_civil_3 = estado_civil == "3" ? 1:0
+      var estado_civil_4 = estado_civil == "4" ? 1:0
+      var estado_civil_5 = estado_civil == "5" ? 1:0
+
+      //var genero_F = genero == "F" ? 1:0
+      var genero_M = genero == "M" ? 1:0
+
+      var identificadorTipoVivienda_A = identificadorTipoVivienda == "A" ? 1:0
+      var identificadorTipoVivienda_F = identificadorTipoVivienda == "F" ? 1:0
+      var identificadorTipoVivienda_H = identificadorTipoVivienda == "H" ? 1:0
+      var identificadorTipoVivienda_O = identificadorTipoVivienda == "O" ? 1:0
+      var identificadorTipoVivienda_P = identificadorTipoVivienda == "P" ? 1:0
+
+      $.get( "scoring", { cant_per_car: cant_per_car, hijos_afiliados: hijos_afiliados, mayor65_afiliados: mayor65_afiliados, salario:salario, edad:edad, meses_Afili:meses_Afili, prom_cantidad:prom_cantidad, prom_compras:prom_compras, ultima_compra:ultima_compra, categoria_A: categoria_A, categoria_B:categoria_B, categoria_C:categoria_C, categoria_D: categoria_D, estado_civil_1:estado_civil_1, estado_civil_2:estado_civil_2,estado_civil_3:estado_civil_3, estado_civil_4: estado_civil_4, estado_civil_5: estado_civil_5, genero_M:genero_M, identificadorTipoVivienda_A:identificadorTipoVivienda_A, identificadorTipoVivienda_F:identificadorTipoVivienda_F,identificadorTipoVivienda_H:identificadorTipoVivienda_H, identificadorTipoVivienda_O:identificadorTipoVivienda_O, identificadorTipoVivienda_P:identificadorTipoVivienda_P, tipoContrato_CO:tipoContrato_CO, tipoContrato_OC:tipoContrato_OC, tipoContrato_PR:tipoContrato_PR, tipoContrato_PS: tipoContrato_PS, tipoContrato_PT: tipoContrato_PT, tipoContrato_TF:tipoContrato_TF, tipoContrato_TI:tipoContrato_TI, model:model, tCred:tCred} ).done( (data) => {
+        $("#scoring").html("Score: "+data);
+      });
+    }
+  )
+  </script>
+
+</body>
+</html>
