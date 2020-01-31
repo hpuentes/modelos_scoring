@@ -97,6 +97,6 @@ def score():
 
     return Score_Clientes(df, tCred, model)
 
-@app.route("/")
+@app.route("/predict")
 def index():
     return render_template("index.html");
